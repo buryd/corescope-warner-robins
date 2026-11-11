@@ -1,0 +1,27 @@
+# meshcoretomqtt drop-in for Warner Robins / Middle Georgia
+# Install on the always-on host that has the observer radio on USB:
+#   https://github.com/Cisien/meshcoretomqtt
+# Then copy/merge this into /etc/mctomqtt/config.d/99-user.toml (Linux)
+# or use: mctomqtt.py --config 99-user.toml
+
+[general]
+# WRB = Warner Robins / Robins AFB. Use MCN if the radio sits in Macon.
+iata = "WRB"
+log_level = "INFO"
+sync_time = true
+
+[serial]
+# Windows COM port example — change to your observer:
+ports = ["COM3"]
+# Linux example:
+# ports = ["/dev/ttyACM0"]
+
+# Publish into the CoreScope container's Mosquitto on this PC.
+[[broker]]
+name = "corescope-local"
+enabled = true
+server = "127.0.0.1"
+port = 1883
+
+[broker.auth]
+method = "none"

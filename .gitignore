@@ -1,0 +1,6 @@
+data/
+API-KEY.txt
+*.log
+enable-features.log
+.jdk/
+mbcap-snapshot/

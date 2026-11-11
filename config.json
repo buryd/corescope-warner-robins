@@ -1,0 +1,168 @@
+{
+  "port": 3000,
+  "apiKey": "CHANGE-ME-SET-LOCALLY",
+  "nodeBlacklist": [],
+  "hiddenNamePrefixes": ["🚫"],
+  "observerIATAWhitelist": ["WRB", "MCN"],
+  "retention": {
+    "nodeDays": 14,
+    "observerDays": 30,
+    "observerPurgeDays": 0,
+    "packetDays": 30,
+    "clientRxDays": 30,
+    "clientRxObsDays": 30,
+    "clientRfDays": 30,
+    "clientRegionsDays": 30,
+    "clientNodeNamesDays": 30,
+    "hopIndexDays": 0
+  },
+  "corsAllowedOrigins": [
+    "*"
+  ],
+  "branding": {
+    "siteName": "Middle Georgia MeshCore",
+    "tagline": "Warner Robins / Macon live MeshCore analyzer",
+    "logoUrl": null,
+    "faviconUrl": null,
+    "homeUrl": null
+  },
+  "home": {
+    "heroTitle": "Middle Georgia MeshCore",
+    "heroSubtitle": "Warner Robins and Macon observers — live packets, nodes, and hop paths.",
+    "steps": [
+      {
+        "emoji": "📡",
+        "title": "Observe",
+        "description": "USB observer on USA 910.525 / 62.5 / SF7 / CR5 tagged WRB or MCN"
+      },
+      {
+        "emoji": "🗺️",
+        "title": "Map",
+        "description": "Watch companions and repeaters around Warner Robins"
+      },
+      {
+        "emoji": "📱",
+        "title": "MeshScope",
+        "description": "Point the Android MeshScope app at this host"
+      }
+    ],
+    "checklist": [
+      {
+        "question": "What region codes do we use?",
+        "answer": "WRB = Warner Robins / Robins AFB area. MCN = Macon. Tag meshcoretomqtt with one of these."
+      },
+      {
+        "question": "What RF preset?",
+        "answer": "USA MeshCore: 910.525 MHz, 62.5 kHz, SF7, CR5. Companion TX 22; RAK repeater set tx 16 (~24 dBm)."
+      }
+    ],
+    "footerLinks": [
+      { "label": "📦 Packets", "url": "#/packets" },
+      { "label": "🗺️ Network Map", "url": "#/map" },
+      { "label": "🔴 Live", "url": "#/live" },
+      { "label": "📡 All Nodes", "url": "#/nodes" }
+    ]
+  },
+  "mqtt": {
+    "broker": "mqtt://localhost:1883",
+    "topic": "meshcore/+/+/packets"
+  },
+  "mqttSources": [
+    {
+      "name": "local",
+      "broker": "mqtt://localhost:1883",
+      "topics": [
+        "meshcore/+/+/packets",
+        "meshcore/#"
+      ],
+      "iataFilter": ["WRB", "MCN"],
+      "region": "WRB"
+    }
+  ],
+  "channelKeys": {
+    "Public": "8b3387e9c5cdea6ac9e5edbaa115cd72"
+  },
+  "hashChannels": [
+    "#test"
+  ],
+  "defaultRegion": "WRB",
+  "mapDefaults": {
+    "center": [32.613, -83.624],
+    "zoom": 11
+  },
+  "map": {
+    "tiles": {
+      "darkDefault": "esri-darkgray-labels",
+      "lightDefault": "opentopomap",
+      "providers": {
+        "carto": {
+          "enabled": false,
+          "key": "",
+          "domain": ""
+        },
+        "opentopomap": {
+          "enabled": true
+        },
+        "usgs": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "geo_filter": {
+    "polygon": [
+      [33.05, -84.05],
+      [33.05, -83.25],
+      [32.20, -83.25],
+      [32.20, -84.05]
+    ],
+    "bufferKm": 25
+  },
+  "foreignAdverts": {
+    "mode": "flag"
+  },
+  "areas": {
+    "WRB": {
+      "label": "Warner Robins",
+      "latMin": 32.50,
+      "latMax": 32.72,
+      "lonMin": -83.75,
+      "lonMax": -83.50
+    },
+    "MCN": {
+      "label": "Macon",
+      "latMin": 32.75,
+      "latMax": 32.95,
+      "lonMin": -83.80,
+      "lonMax": -83.50
+    },
+    "MIDGA": {
+      "label": "Middle Georgia",
+      "polygon": [
+        [33.05, -84.05],
+        [33.05, -83.25],
+        [32.20, -83.25],
+        [32.20, -84.05]
+      ]
+    }
+  },
+  "regions": {
+    "WRB": "Warner Robins, GA",
+    "MCN": "Macon, GA"
+  },
+  "regionFallback": {
+    "maxHops": 3
+  },
+  "regionQuickPicks": [
+    {
+      "name": "Middle Georgia",
+      "description": "Warner Robins + Macon observers",
+      "regions": ["WRB", "MCN"]
+    }
+  ],
+  "hashRegions": [
+    "#MiddleGeorgia",
+    "#WarnerRobins",
+    "#Macon"
+  ]
+}

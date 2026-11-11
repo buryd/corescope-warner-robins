@@ -1,0 +1,13 @@
+﻿# Middle Georgia / Warner Robins CoreScope
+services:
+  corescope:
+    image: ghcr.io/kpa-clawbot/corescope:latest
+    container_name: corescope-warner-robins
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+      - "1883:1883"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - TZ=America/New_York
